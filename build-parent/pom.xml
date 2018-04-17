@@ -112,7 +112,7 @@
     <version.wildfly-microprofile-config>1.2.1</version.wildfly-microprofile-config>
     <version.smallrye.metrics>1.1.0</version.smallrye.metrics>
     <version.smallrye.restclient>1.0.0</version.smallrye.restclient>
-
+    <version.microprofile-lra>0.0.2.Final</version.microprofile-lra>
   </properties>
 
   <build>
@@ -390,6 +390,12 @@
         <groupId>org.eclipse.microprofile.health</groupId>
         <artifactId>microprofile-health-api</artifactId>
         <version>${version.microprofile-health}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.narayana.microprofile.lra</groupId>
+        <artifactId>microprofile-lra-api</artifactId>
+        <version>${version.microprofile-lra}</version>
       </dependency>
 
       <dependency>
