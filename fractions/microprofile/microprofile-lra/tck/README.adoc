@@ -1,0 +1,27 @@
+This project runs the swarm implementation of LRA against the microprofile-lra TCK.
+The LRA swarm fraction automatically pulls in the implementation.
+The microprofile-lra TCK dependency pulls in the TCK.
+
+The project includes the swarm plugin which will start a container with the LRA support under test. It expects an LRA coordinator to be running - the host and port number of this endpoint should be configured using the system properties lra.http.host and lra.http.port respectively. For example,
+to use the narayana implementation git clone https://github.com/jbosstm/narayana.git and build the project then start the coordinator on localhost and port 8082:
+
+  java -jar rts/lra/lra-coordinator/target/lra-coordinator-swarm.jar -Dswarm.http.port=8082 &
+
+So with the coordinator listening on localhost and port 8082 run the TCK using
+
+  mvn clean package && java -Dswarm.http.port=8080 -Dlra.http.port=8082 -jar target/lra-tck-swarm.jar
+
+To test another LRA implementation you will also need to depend on the TCK and similarly start a container with your own implementation of the LRA specifation. 
+
+With this set up you may trigger the TCK by sending a PUT request to the path tck/all:
+
+  curl -XPUT http://localhost:8080/tck/all?verbose=false|jq
+
+where jq pretty prints the json output (https://stedolan.github.io/jq/) and the `tck/all` path runs
+all tests in the tck. Setting verbose=true will include the full stack trace of any test failures.
+If you want to run a single test replace all with the name of the test you to run:
+
+timeLimit, startLRA, cancelLRA, closeLRA, getActiveLRAs, getAllLRAs, isActiveLRA, nestedActivity, completeMultiLevelNestedActivity, compensateMultiLevelNestedActivity, mixedMultiLevelNestedActivity,joinLRAViaHeader, join, leaveLRA, leaveLRAViaAPI, dependentLRA, cancelOn, cancelOnFamily, acceptTest
+
+The tck source is at https://github.com/mmusgrov/microprofile-lra/tree/master/tck
+
