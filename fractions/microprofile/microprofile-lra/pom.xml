@@ -22,6 +22,6 @@
 
     <modules>
         <module>fraction</module>
-        <module>tck-run</module>
+        <module>tck</module>
     </modules>
 </project>

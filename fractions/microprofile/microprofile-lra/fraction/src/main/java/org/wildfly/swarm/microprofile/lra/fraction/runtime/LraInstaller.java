@@ -26,6 +26,7 @@ import io.narayana.lra.client.GenericLRAExceptionMapper;
 import io.narayana.lra.client.IllegalLRAStateExceptionMapper;
 import io.narayana.lra.client.InvalidLRAIdExceptionMapper;
 import io.narayana.lra.client.ParentLRAJoinExceptionMapper;
+import io.narayana.lra.client.internal.proxy.ParticipantProxyResource;
 import org.jboss.logging.Logger;
 import org.jboss.shrinkwrap.api.Archive;
 import org.wildfly.swarm.microprofile.lra.fraction.MicroProfileLRAFraction;
@@ -57,11 +58,12 @@ public class LraInstaller implements DeploymentProcessor {
             WARArchive webArchive = archive.as(WARArchive.class);
             WebXmlAsset webXml = webArchive.findWebXmlAsset();
 
-            String providers = String.format("%s,%s,%s",
+            String providers = String.format("%s,%s,%s,%s,%s",
                     GenericLRAExceptionMapper.class.getName(),
                     IllegalLRAStateExceptionMapper.class.getName(),
                     InvalidLRAIdExceptionMapper.class.getName(),
-                    ParentLRAJoinExceptionMapper.class.getName()
+                    ParentLRAJoinExceptionMapper.class.getName(),
+                    ParticipantProxyResource.class.getName()
             );
 
             if (webXml == null) {

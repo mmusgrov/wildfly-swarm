@@ -33,7 +33,10 @@ import org.wildfly.swarm.spi.api.annotations.DeploymentModule;
 @DeploymentModule(name = "org.eclipse.microprofile.lra")
 @DeploymentModule(name = "org.eclipse.microprofile.lra",
         export = true, services = Module.ServiceHandling.IMPORT, slot = "main", metaInf = DeploymentModule.MetaInfDisposition.IMPORT)
-@DeploymentModule(name = "org.jboss.narayana.rts.lra-client", export = true)
+@DeploymentModule(name = "org.jboss.narayana.rts.lra-client",
+        export = true)
+@DeploymentModule(name = "org.jboss.narayana.rts.lra-proxy-api",
+        export = true)
 public class MicroProfileLRAFraction implements Fraction<MicroProfileLRAFraction> {
 
     public MicroProfileLRAFraction() {
