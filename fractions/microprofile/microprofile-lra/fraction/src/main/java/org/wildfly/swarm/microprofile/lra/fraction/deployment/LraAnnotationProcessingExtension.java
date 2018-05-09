@@ -68,6 +68,9 @@ import org.jboss.logging.Logger;
 import static org.eclipse.microprofile.lra.client.LRAClient.LRA_COORDINATOR_HOST_KEY;
 import static org.eclipse.microprofile.lra.client.LRAClient.LRA_COORDINATOR_PATH_KEY;
 import static org.eclipse.microprofile.lra.client.LRAClient.LRA_COORDINATOR_PORT_KEY;
+import static org.eclipse.microprofile.lra.client.LRAClient.LRA_RECOVERY_HOST_KEY;
+import static org.eclipse.microprofile.lra.client.LRAClient.LRA_RECOVERY_PATH_KEY;
+import static org.eclipse.microprofile.lra.client.LRAClient.LRA_RECOVERY_PORT_KEY;
 
 /**
  * <p>
@@ -292,15 +295,31 @@ public class LraAnnotationProcessingExtension implements Extension {
 
         Config config = ConfigProvider.getConfig();
 
-        String rcHost = config.getOptionalValue(LRA_COORDINATOR_HOST_KEY, String.class).orElse("localhost");
-        int rcPort = config.getOptionalValue(LRA_COORDINATOR_PORT_KEY, Integer.class).orElse(COORDINATOR_SWARM_PORT);
-        String coordinatorPath = config.getOptionalValue(LRA_COORDINATOR_PATH_KEY, String.class).orElse("lra-coordinator");
-        String coordinatorUrl = String.format("http://%s:%d/%s", rcHost, rcPort, coordinatorPath);
+        String lcHost = config.getOptionalValue(LRA_COORDINATOR_HOST_KEY, String.class).orElse("localhost");
+        int lcPort = config.getOptionalValue(LRA_COORDINATOR_PORT_KEY, Integer.class).orElse(COORDINATOR_SWARM_PORT);
+        String lraCoordinatorPath = config.getOptionalValue(LRA_COORDINATOR_PATH_KEY, String.class)
+                .orElse(NarayanaLRAClient.COORDINATOR_PATH_NAME);
 
-        LOGGER.infof(String.format("Using LRA coordinator %s", coordinatorUrl));
+        String lraCoordinatorUrl = String.format("http://%s:%d/%s", lcHost, lcPort, lraCoordinatorPath);
+
+        String rcHost = config.getOptionalValue(LRA_RECOVERY_HOST_KEY, String.class).orElse(lcHost);
+        int rcPort = config.getOptionalValue(LRA_RECOVERY_PORT_KEY, Integer.class).orElse(lcPort);
+        String rcPath = config.getOptionalValue(LRA_RECOVERY_PATH_KEY, String.class).orElse(lraCoordinatorUrl);
+
+        String rcUrl = String.format("http://%s:%d/%s", rcHost, rcPort, rcPath);
+
+        LOGGER.infof(String.format("Using LRA coordinator %s", lraCoordinatorUrl));
+
+        System.setProperty(LRA_COORDINATOR_HOST_KEY, lcHost);
+        System.setProperty(LRA_COORDINATOR_PORT_KEY, Integer.toString(lcPort));
+        System.setProperty(LRA_COORDINATOR_PATH_KEY, lraCoordinatorPath);
+        System.setProperty(LRA_RECOVERY_HOST_KEY, rcHost);
+        System.setProperty(LRA_RECOVERY_PORT_KEY, Integer.toString(rcPort));
+        System.setProperty(LRA_RECOVERY_PATH_KEY, rcPath);
 
         try {
-            NarayanaLRAClient.setDefaultEndpoint(new URI(coordinatorUrl));
+            NarayanaLRAClient.setDefaultCoordinatorEndpoint(new URI(lraCoordinatorUrl));
+            NarayanaLRAClient.setDefaultRecoveryEndpoint(new URI(rcUrl));
         } catch (URISyntaxException e) {
             LOGGER.infof(String.format("Invalid LRA coordinator configuration: %s", e.getMessage()));
         }
