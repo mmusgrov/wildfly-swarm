@@ -3,16 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wildfly.swarm</groupId>
+    <parent>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>build-parent</artifactId>
+        <version>2018.5.0-SNAPSHOT</version>
+        <relativePath>../../../../build-parent/pom.xml</relativePath>
+    </parent>
+
     <artifactId>lra-tck-swarm-runner</artifactId>
-    <version>2018.5.0-SNAPSHOT</version>
     <name>Swarm LRA TCK Test Runner</name>
 
     <packaging>war</packaging>
 
     <properties>
         <version.wildfly-swarm>${project.version}</version.wildfly-swarm>
-        <version.microprofile-lra-tck>1.0-SNAPSHOT</version.microprofile-lra-tck>
+        <version.microprofile-lra-tck>0.0.1.Final</version.microprofile-lra-tck>
         <swarm.debug.port>5005</swarm.debug.port>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -56,7 +61,7 @@
         whic will detect the JAX-RS resources pulled in by the following TCK dependency
           -->
         <dependency>
-            <groupId>org.eclipse.microprofile.lra</groupId>
+            <groupId>io.narayana.microprofile.lra</groupId>
             <artifactId>microprofile-lra-tck</artifactId>
             <version>${version.microprofile-lra-tck}</version>
         </dependency>

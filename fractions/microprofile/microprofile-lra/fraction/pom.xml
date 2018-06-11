@@ -24,7 +24,7 @@
         <maven.test.skip>true</maven.test.skip>
         <swarm.fraction.stability>unstable</swarm.fraction.stability>
         <swarm.fraction.tags>Eclipse MicroProfile,MicroServices,LRA</swarm.fraction.tags>
-        <version.narayana>5.8.2.Final-SNAPSHOT</version.narayana>
+        <version.narayana>5.8.3.Final-SNAPSHOT</version.narayana>
         <version.resteasy.json-p>3.0.6.Final</version.resteasy.json-p>
     </properties>
 
@@ -72,17 +72,10 @@
         </dependency>
         <!-- Provided APIs -->
         <dependency>
-            <groupId>org.eclipse.microprofile.lra</groupId>
+            <groupId>io.narayana.microprofile.lra</groupId>
             <artifactId>microprofile-lra-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.annotation.versioning</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>0.0.1.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.geronimo.config</groupId>
             <artifactId>geronimo-config-impl</artifactId>

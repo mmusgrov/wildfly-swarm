@@ -20,6 +20,14 @@
 
     <packaging>pom</packaging>
 
+    <repositories>
+      <repository>
+        <id>jboss-public-releases-repository-group</id>
+        <name>JBoss Public Releases Maven Repository Group</name>
+        <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+      </repository>
+    </repositories>
+
     <modules>
         <module>fraction</module>
         <module>tck</module>
