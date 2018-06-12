@@ -27,7 +27,7 @@ import org.wildfly.swarm.spi.meta.PackageFractionDetector;
 public class MicroProfileLRAPackageDetector extends PackageFractionDetector {
 
     public MicroProfileLRAPackageDetector() {
-        anyPackageOf("org.eclipse.microprofile.lra", "org.eclipse.microprofile.lra.client", "org.eclipse.microprofile.lra.annotation");
+        anyPackageOf("io.narayana.microprofile.lra", "io.narayana.microprofile.lra.client", "io.narayana.microprofile.lra.annotation");
     }
 
     @Override

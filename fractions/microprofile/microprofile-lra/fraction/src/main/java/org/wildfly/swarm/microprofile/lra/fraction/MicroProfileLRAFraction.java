@@ -30,8 +30,8 @@ import org.wildfly.swarm.spi.api.annotations.DeploymentModule;
 @DeploymentModule(name = "org.jboss.dmr")
 @DeploymentModule(name = "org.wildfly.swarm.microprofile.lra.fraction",
         export = true, slot = "deployment", metaInf = DeploymentModule.MetaInfDisposition.IMPORT)
-@DeploymentModule(name = "org.eclipse.microprofile.lra")
-@DeploymentModule(name = "org.eclipse.microprofile.lra",
+@DeploymentModule(name = "io.narayana.microprofile.lra")
+@DeploymentModule(name = "io.narayana.microprofile.lra",
         export = true, services = Module.ServiceHandling.IMPORT, slot = "main", metaInf = DeploymentModule.MetaInfDisposition.IMPORT)
 @DeploymentModule(name = "org.jboss.narayana.rts.lra-client",
         export = true)

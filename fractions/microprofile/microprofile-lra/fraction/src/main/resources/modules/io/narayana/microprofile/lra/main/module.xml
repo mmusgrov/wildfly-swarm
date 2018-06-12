@@ -13,14 +13,14 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<module xmlns="urn:jboss:module:1.3" name="org.eclipse.microprofile.lra">
+<module xmlns="urn:jboss:module:1.3" name="io.narayana.microprofile.lra">
     <resources>
         <!-- make the LRA JAX-RS filters available to deployments -->
         <artifact name="org.jboss.narayana.rts:lra-filters:${version.narayana}"/>
 
         <artifact name="org.jboss.resteasy:resteasy-json-p-provider:${version.resteasy.json-p}"/>
 
-        <artifact name="org.eclipse.microprofile.lra:microprofile-lra-api:${version.microprofile-lra}"/>
+        <artifact name="io.narayana.microprofile.lra:microprofile-lra-api:${version.microprofile-lra}"/>
     </resources>
 
     <dependencies>
@@ -31,7 +31,7 @@
         <module name="javax.json.api" export="true" />
         <module name="org.jboss.narayana.rts.lra-client" export="true" slot="main"/>
         <module name="org.jboss.narayana.rts.lra-proxy-api" export="true" services="import" slot="main"/>
-        <module name="org.eclipse.microprofile.lra" export="true" services="import"/>
+        <module name="io.narayana.microprofile.lra" export="true" services="import"/>
         <module name="org.eclipse.microprofile.config.api" export="true"/>
     </dependencies>
 </module>

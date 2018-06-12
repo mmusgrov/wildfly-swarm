@@ -13,7 +13,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<module xmlns="urn:jboss:module:1.3" name="org.eclipse.microprofile.lra">
+<module xmlns="urn:jboss:module:1.3" name="org.apache.geronimo.config">
     <resources>
         <artifact name="org.apache.geronimo.config:geronimo-config-impl:1.0"/>
     </resources>
