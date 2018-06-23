@@ -17,8 +17,8 @@
 
     <properties>
         <version.wildfly-swarm>${project.version}</version.wildfly-swarm>
-        <version.microprofile-lra-tck>0.0.1.Final</version.microprofile-lra-tck>
-	<version.narayana>5.8.3.Final-SNAPSHOT</version.narayana>
+        <version.microprofile-lra-tck>0.0.2.Final-SNAPSHOT</version.microprofile-lra-tck>
+        <version.narayana>5.8.3.Final-SNAPSHOT</version.narayana>
         <swarm.debug.port>5005</swarm.debug.port>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -62,8 +62,12 @@
         whic will detect the JAX-RS resources pulled in by the following TCK dependency
           -->
         <dependency>
+            <groupId>org.eclipse.microprofile.lra</groupId>
+	    <artifactId>microprofile-lra-tck</artifactId>
+	    <!--
             <groupId>io.narayana.microprofile.lra</groupId>
             <artifactId>microprofile-lra-tck</artifactId>
+-->
             <version>${version.microprofile-lra-tck}</version>
         </dependency>
         <!-- pull in the swarm implementation of the LRA API -->
@@ -72,11 +76,13 @@
             <artifactId>microprofile-lra</artifactId>
             <version>${version.wildfly-swarm}</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.jboss.narayana.rts</groupId>
             <artifactId>lra-coordinator</artifactId>
             <version>${version.narayana}</version>
-	    <type>war</type>
+            <type>war</type>
         </dependency>
+-->
     </dependencies>
 </project>

@@ -304,7 +304,7 @@ public class LraAnnotationProcessingExtension implements Extension {
 
         String rcHost = config.getOptionalValue(LRA_RECOVERY_HOST_KEY, String.class).orElse(lcHost);
         int rcPort = config.getOptionalValue(LRA_RECOVERY_PORT_KEY, Integer.class).orElse(lcPort);
-        String rcPath = config.getOptionalValue(LRA_RECOVERY_PATH_KEY, String.class).orElse(lraCoordinatorUrl);
+        String rcPath = config.getOptionalValue(LRA_RECOVERY_PATH_KEY, String.class).orElse("lra-recovery-coordinator");
 
         String rcUrl = String.format("http://%s:%d/%s", rcHost, rcPort, rcPath);
 
