@@ -20,6 +20,11 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+      <version.microprofile-lra>0.0.2.Final-SNAPSHOT</version.microprofile-lra>
+      <version.narayana>5.8.3.Final-SNAPSHOT</version.narayana>
+    </properties>
+
     <repositories>
       <repository>
         <id>jboss-public-releases-repository-group</id>
@@ -29,7 +34,8 @@
     </repositories>
 
     <modules>
-        <module>fraction</module>
+        <module>participant</module>
+        <module>coordinator</module>
         <module>tck</module>
     </modules>
 </project>
