@@ -15,8 +15,6 @@
     <packaging>war</packaging>
 
     <properties>
-	<version.narayana>5.8.3.Final-SNAPSHOT</version.narayana>
-
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <narayana.nodename.property>CoreEnvironmentBean.nodeIdentifier</narayana.nodename.property>
         <swarm.http.port>8080</swarm.http.port>

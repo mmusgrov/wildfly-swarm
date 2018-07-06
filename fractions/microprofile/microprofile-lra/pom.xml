@@ -22,7 +22,7 @@
 
     <properties>
       <version.microprofile-lra>0.0.2.Final-SNAPSHOT</version.microprofile-lra>
-      <version.narayana>5.8.3.Final-SNAPSHOT</version.narayana>
+      <version.narayana>5.9.0.Final</version.narayana>
     </properties>
 
     <repositories>
