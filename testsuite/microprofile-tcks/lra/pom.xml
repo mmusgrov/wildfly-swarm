@@ -24,13 +24,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.wildfly.swarm.testsuite</groupId>
-        <artifactId>wildlfy-swarm-microprofile-tck-parent</artifactId>
-        <version>2018.5.0-SNAPSHOT</version>
+        <groupId>io.thorntail.testsuite</groupId>
+        <artifactId>thorntail-microprofile-tck-parent</artifactId>
+        <version>2.0.1.Final-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>wildlfy-swarm-microprofile-tck-lra</artifactId>
+    <artifactId>thorntail-microprofile-tck-lra</artifactId>
     <name>MicroProfile TCK: LRA</name>
     <build>
         <plugins>
@@ -49,14 +49,14 @@
                 <configuration>
                     <artifactItems>
                         <artifactItem>
-                            <groupId>org.wildfly.swarm</groupId>
-                            <artifactId>lra-tck-swarm-runner</artifactId>
+                            <groupId>io.thorntail</groupId>
+                            <artifactId>lra-tck-runner</artifactId>
                             <version>${project.version}</version>
                             <type>jar</type>
                             <overWrite>true</overWrite>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <destFileName>lra-tck-swarm.jar</destFileName>
-                            <classifier>swarm</classifier>
+                            <destFileName>lra-tck-thorntail.jar</destFileName>
+                            <classifier>thorntail</classifier>
                         </artifactItem>
                     </artifactItems>
                 </configuration>
@@ -65,13 +65,13 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.wildfly.swarm</groupId>
-            <artifactId>lra-tck-swarm-runner</artifactId>
+            <groupId>io.thorntail</groupId>
+            <artifactId>lra-tck-runner</artifactId>
             <version>${project.version}</version>
-            <type>jar</type>
+            <type>war</type>
         </dependency>
         <dependency>
-            <groupId>org.wildfly.swarm</groupId>
+            <groupId>io.thorntail</groupId>
             <artifactId>lra-coordinator</artifactId>
             <version>${project.version}</version>
             <type>war</type>
@@ -102,7 +102,7 @@
                                     <workingDirectory>${project.build.directory}/exec-working-directory</workingDirectory>
                                     <arguments>
                                         <argument>-jar</argument>
-                                        <argument>${project.build.directory}/lra-tck-swarm.jar</argument>
+                                        <argument>${project.build.directory}/lra-tck-thorntail.jar</argument>
                                         <argument>-Dlra.http.port=8080</argument>
                                         <argument>-Dswarm.http.port=8080</argument>
                                         <argument>-Dlra.tck.run=TRUE</argument>
@@ -117,6 +117,5 @@
             </build>
         </profile>
     </profiles>
-
 </project>
 
